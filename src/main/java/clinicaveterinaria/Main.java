@@ -43,18 +43,18 @@ public class Main {
         System.out.println("Mascotas de Ana Perez: " + reporteService.generarReporteMascotasPorDueno("Ana Perez").size());
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
-        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
+        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento, reservaService, diagnosticoService, reporteService);
         new Clinica().agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
-    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento) {
+    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento, ReservaService reservaService, DiagnosticoService diagnosticoService, ReporteService reporteService) {
         // AHORA implementa el metodo desde ReservaService
-        Cita citaDesdeModelo = reservaService.reservarCita(2, mascota, LocalDate.now().plusDays(1));
+        Cita citaDesdeModelo = reservaService.reservarCita(2, mascota, veterinario, LocalDate.now().plusDays(1));
         // AHORA implementa el metodo desde DiagnosticoService
         diagnosticoService.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
         // AHORA implementa el metodo desde ReporteService
-        System.out.println(reporteService.crearReporte(citaDesdeModelo));
+        System.out.println(reporteService.crearReporte(citaDesdeModelo, veterinario));
 
         INadador pez = new Pez(3, "Nemo");
         pez.nadar();
