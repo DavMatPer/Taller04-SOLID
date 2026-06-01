@@ -3,7 +3,7 @@ package clinicaveterinaria.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Veterinario extends DiagnosticoService {
+public class Veterinario {
     private int id;
     private String nombre;
     private String especialidad;
