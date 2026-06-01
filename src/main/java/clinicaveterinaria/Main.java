@@ -1,10 +1,11 @@
 package clinicaveterinaria;
 
+
 import clinicaveterinaria.interfaces.INadador;
 import clinicaveterinaria.model.*;
 import clinicaveterinaria.repository.*;
 import clinicaveterinaria.service.*;
-
+import clinicaveterinaria.interfaces.ITratamiento;
 
 import java.time.LocalDate;
 
@@ -36,8 +37,8 @@ public class Main {
         System.out.println(mascotaService.obtenerMascota(1));
         System.out.println(cita);
         System.out.println(factura);
-        System.out.println("Preparacion: " + tratamientoService.prepararSala(tratamiento));
-        System.out.println("Costo con impuestos: " + new CalculadoraCostoTratamiento().calcularConImpuestos(tratamiento));
+        System.out.println("Preparacion: " + tratamientoService.prepararSala((ITratamiento) tratamiento));
+        System.out.println("Costo con impuestos: " + new CalculadoraCostoTratamiento().calcularConImpuestos((ITratamiento) tratamiento));
         System.out.println("Citas Dr. Ruiz: " + reporteService.generarReporteCitasPorVeterinario(1).size());
         System.out.println("Mascotas de Ana Perez: " + reporteService.generarReporteMascotasPorDueno("Ana Perez").size());
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
