@@ -1,10 +1,11 @@
 package clinicaveterinaria;
 
+
 import clinicaveterinaria.interfaces.INadador;
 import clinicaveterinaria.model.*;
 import clinicaveterinaria.repository.*;
 import clinicaveterinaria.service.*;
-
+import clinicaveterinaria.interfaces.ITratamiento;
 
 import java.time.LocalDate;
 
@@ -36,24 +37,24 @@ public class Main {
         System.out.println(mascotaService.obtenerMascota(1));
         System.out.println(cita);
         System.out.println(factura);
-        System.out.println("Preparacion: " + tratamientoService.prepararSala(tratamiento));
-        System.out.println("Costo con impuestos: " + new CalculadoraCostoTratamiento().calcularConImpuestos(tratamiento));
+        System.out.println("Preparacion: " + tratamientoService.prepararSala((ITratamiento) tratamiento));
+        System.out.println("Costo con impuestos: " + new CalculadoraCostoTratamiento().calcularConImpuestos((ITratamiento) tratamiento));
         System.out.println("Citas Dr. Ruiz: " + reporteService.generarReporteCitasPorVeterinario(1).size());
         System.out.println("Mascotas de Ana Perez: " + reporteService.generarReporteMascotasPorDueno("Ana Perez").size());
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
-        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
+        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento, reservaService, diagnosticoService, reporteService);
         new Clinica().agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
-    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento) {
+    private static void demostrarViolacionesSinRomperEjecucion(Veterinario veterinario, Mascota mascota, Tratamiento tratamiento, ReservaService reservaService, DiagnosticoService diagnosticoService, ReporteService reporteService) {
         // AHORA implementa el metodo desde ReservaService
-        Cita citaDesdeModelo = reservaService.reservarCita(2, mascota, LocalDate.now().plusDays(1));
+        Cita citaDesdeModelo = reservaService.reservarCita(2, mascota, veterinario, LocalDate.now().plusDays(1));
         // AHORA implementa el metodo desde DiagnosticoService
         diagnosticoService.diagnosticar(citaDesdeModelo, "Ejemplo de SRP violado desde el modelo.");
         // AHORA implementa el metodo desde ReporteService
-        System.out.println(reporteService.crearReporte(citaDesdeModelo));
+        System.out.println(reporteService.crearReporte(citaDesdeModelo, veterinario));
 
         INadador pez = new Pez(3, "Nemo");
         pez.nadar();
