@@ -1,7 +1,11 @@
 package clinicaveterinaria.interfaces;
 
 public interface ITratamiento {
-    double calcularCostoFinal();
+    double CostoFinal();
 
-    String obtenerIndicaciones();
+    String Indicaciones();
+    
+    String Sala();
+    
+    double ConImpuestos();
 }
