@@ -43,8 +43,11 @@ public class Main {
         System.out.println("Mascotas de Ana Perez: " + reporteService.generarReporteMascotasPorDueno("Ana Perez").size());
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
-        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento, reservaService, diagnosticoService, reporteService);
-        new Clinica().agendarConsultaRapida(mascota, veterinario);
+        demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
+        DirectoVeterinario veterinarioService = new DirectoVeterinario();
+        DirectoBaseDatos baseDatosDirecta = new DirectoBaseDatos();
+        Clinica clinica = new Clinica(veterinarioService, baseDatosDirecta);
+        clinica.agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 

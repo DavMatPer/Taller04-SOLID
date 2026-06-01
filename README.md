@@ -49,6 +49,25 @@ src/main/java/clinicaveterinaria/
 - Integrante 3: refactorizar LSP.
 - Integrante 4: refactorizar ISP y DIP.
 
+FERNANDO ZAMBRANO: 
+
+Lo que primero hice, QUE ES LO DEL PASO 1:  eS que la interface ServiceClinica es hacerla o divirla en pequeñas interfaces: `IMascotaService`, `ICitaService`, `IFacturaService`, `IReporteService` 
+
+en la otra parte del RecepcionService 
+lo que se hizo fue quitar lo que npo se usaba y otra se agragaron en el impor, ejemplo: 
+//agregado nueva interfaces
+ // se elimino generarReporteCitasPorVeterinario 
+
+   //se elimino generarReporteMascotasPorDueno 
+//se elimino calcularIngresosMensual 
+// se elimino crearFactura 
+  // se elimino actualizarVeterinario 
+//quitado y agragado  
+
+En el paso 3: Se elimino la creacion directa de objetos con new dentro de cclinica y se inyectaron las dependencias mediante el constructor para que la clase dependa de interfaces y no de implementaciones concretas.
+ y por ultimo en el paso 4 que corresponde al main:  cree la implementacipnes concretas DirectoVeterinario y DirectoBaseDatos) y se inyecto al constructor de clinica verificando que las clases funciones sin crear sus propias dependecias, cumpliendo con DIP 
+
+
 Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
 
 ## DISCUSION
