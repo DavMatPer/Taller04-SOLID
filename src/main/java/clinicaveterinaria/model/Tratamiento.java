@@ -17,8 +17,8 @@ public class Tratamiento {
         this.costo = costo;
     }
 
-    public double CalcularCostoFinal(ITratamiento cos) {
-        return cos.CostoFinal();
+    public double calcularCostoFinal(ITratamiento cost) {
+        return cost.CostoFinal();
     }
 
     public String obtenerIndicaciones(ITratamiento ind) {
@@ -82,5 +82,9 @@ public class Tratamiento {
                 ", descripcion='" + descripcion + '\'' +
                 ", costo=" + costo +
                 '}';
+    }
+
+    public String obtenerIndicaciones() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
