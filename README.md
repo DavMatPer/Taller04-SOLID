@@ -49,17 +49,43 @@ src/main/java/clinicaveterinaria/
 - Integrante 3: refactorizar LSP.
 - Integrante 4: refactorizar ISP y DIP.
 
+FERNANDO ZAMBRANO: 
+
+Lo que primero hice, QUE ES LO DEL PASO 1:  eS que la interface ServiceClinica es hacerla o divirla en pequeñas interfaces: `IMascotaService`, `ICitaService`, `IFacturaService`, `IReporteService` 
+
+en la otra parte del RecepcionService 
+lo que se hizo fue quitar lo que npo se usaba y otra se agragaron en el impor, ejemplo: 
+//agregado nueva interfaces
+ // se elimino generarReporteCitasPorVeterinario 
+
+   //se elimino generarReporteMascotasPorDueno 
+//se elimino calcularIngresosMensual 
+// se elimino crearFactura 
+  // se elimino actualizarVeterinario 
+//quitado y agragado  
+
+En el paso 3: Se elimino la creacion directa de objetos con new dentro de cclinica y se inyectaron las dependencias mediante el constructor para que la clase dependa de interfaces y no de implementaciones concretas.
+ y por ultimo en el paso 4 que corresponde al main:  cree la implementacipnes concretas DirectoVeterinario y DirectoBaseDatos) y se inyecto al constructor de clinica verificando que las clases funciones sin crear sus propias dependecias, cumpliendo con DIP 
+
+
 Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
 
 ## DISCUSION
 
 ###  1. PABLO OJEDA
 
-Se eliminaron los siguiente metodos de la clase Veterinario:
+1) Se eliminaron los siguiente metodos de la clase Veterinario:
 
 - reservarCita() - Logica a ReservaService
 - diagnosticar() -  Logica a DiagnosticoService
 - crearReporte() - Logica a ReporteService
+
+2) Se cambiaron las firmas de los métodos privados del main para agregar los objetos de tipo service:
+- reservaService
+- diagnosticoService
+- reporteSerivce
+
+3) Se cambió reporteService para agregar el reporte de que una cita fue creada: No existía el metodo crearReporte(), así que se trasladó la logica de Veterinario a reporteService
 
 ### 3. DAVID MATOS
 
@@ -73,3 +99,4 @@ Para resolverlo hicimos:
 - Cambiamos en el método `demostrarViolacionesSinRomperEjecucion` el tipo de una variable pez que era Animal por el tipo Nadador. 
 
 Ahora con este cambio las clases hijas e pueden sustituir por el padre sin miedo de que exista un error o acción antinatural.
+
