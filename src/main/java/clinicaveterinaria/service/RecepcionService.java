@@ -1,6 +1,7 @@
 package clinicaveterinaria.service;
 
-import clinicaveterinaria.interfaces.IServicioClinica;
+import clinicaveterinaria.interfaces.IMascotaService;
+import clinicaveterinaria.interfaces.ICitaService;     //quitado y agragado 
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
@@ -10,13 +11,18 @@ import clinicaveterinaria.model.Veterinario;
 import java.util.List;
 
 
-public class RecepcionService implements IServicioClinica {
+public class RecepcionService
+        implements IMascotaService,
+                  ICitaService,
+               IVeterinarioService {
+
     private final ServicioClinicaCompleto servicioCompleto;
 
     public RecepcionService(ServicioClinicaCompleto servicioCompleto) {
         this.servicioCompleto = servicioCompleto;
     }
 
+    // Mascotasqeuda fijop
     @Override
     public void crearMascota(Mascota mascota) {
         servicioCompleto.crearMascota(mascota);
@@ -37,6 +43,7 @@ public class RecepcionService implements IServicioClinica {
         servicioCompleto.eliminarMascota(id);
     }
 
+    // Veterinarios queda fijo 
     @Override
     public void crearVeterinario(Veterinario veterinario) {
         servicioCompleto.crearVeterinario(veterinario);
@@ -47,16 +54,7 @@ public class RecepcionService implements IServicioClinica {
         return servicioCompleto.obtenerVeterinario(id);
     }
 
-    @Override
-    public void actualizarVeterinario(Veterinario veterinario) {
-        throw new UnsupportedOperationException("Recepcion no actualiza veterinarios.");
-    }
-
-    @Override
-    public void eliminarVeterinario(int id) {
-        throw new UnsupportedOperationException("Recepcion no elimina veterinarios.");
-    }
-
+    // Citas queda fijo 
     @Override
     public void crearCita(Cita cita) {
         servicioCompleto.crearCita(cita);
@@ -70,40 +68,5 @@ public class RecepcionService implements IServicioClinica {
     @Override
     public void cancelarCita(int id) {
         servicioCompleto.cancelarCita(id);
-    }
-
-    @Override
-    public void crearTratamiento(Tratamiento tratamiento) {
-        throw new UnsupportedOperationException("Recepcion no crea tratamientos.");
-    }
-
-    @Override
-    public double calcularTratamiento(Tratamiento tratamiento) {
-        throw new UnsupportedOperationException("Recepcion no calcula tratamientos.");
-    }
-
-    @Override
-    public void crearFactura(Factura factura) {
-        throw new UnsupportedOperationException("Recepcion no crea facturas.");
-    }
-
-    @Override
-    public void pagarFactura(int id) {
-        throw new UnsupportedOperationException("Recepcion no cobra facturas.");
-    }
-
-    @Override
-    public List<Cita> generarReporteCitasPorVeterinario(int veterinarioId) {
-        throw new UnsupportedOperationException("Recepcion no genera reportes.");
-    }
-
-    @Override
-    public List<Mascota> generarReporteMascotasPorDueno(String duenoNombre) {
-        throw new UnsupportedOperationException("Recepcion no genera reportes.");
-    }
-
-    @Override
-    public double calcularIngresosMensual() {
-        throw new UnsupportedOperationException("Recepcion no calcula ingresos.");
     }
 }

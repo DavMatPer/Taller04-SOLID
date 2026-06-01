@@ -42,7 +42,10 @@ public class Main {
         System.out.println("Ingresos del mes: " + reporteService.calcularIngresosMensual());
 
         demostrarViolacionesSinRomperEjecucion(veterinario, mascota, tratamiento);
-        new Clinica().agendarConsultaRapida(mascota, veterinario);
+        DirectoVeterinario veterinarioService = new DirectoVeterinario();
+        DirectoBaseDatos baseDatosDirecta = new DirectoBaseDatos();
+        Clinica clinica = new Clinica(veterinarioService, baseDatosDirecta);
+        clinica.agendarConsultaRapida(mascota, veterinario);
         new ServicioClinicaCompleto(baseDatos).calcularTratamiento(tratamiento);
     }
 
