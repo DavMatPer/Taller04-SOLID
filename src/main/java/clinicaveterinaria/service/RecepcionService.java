@@ -7,14 +7,13 @@ import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
 import clinicaveterinaria.model.Tratamiento;
 import clinicaveterinaria.model.Veterinario;
+import clinicaveterinaria.interfaces.ICitaService;
+import clinicaveterinaria.interfaces.IVeterinarioService;
 
 import java.util.List;
 
 
-public class RecepcionService
-        implements IMascotaService,
-                  ICitaService,
-               IVeterinarioService {
+public class RecepcionService implements IMascotaService,ICitaService {
 
     private final ServicioClinicaCompleto servicioCompleto;
 
@@ -43,13 +42,12 @@ public class RecepcionService
         servicioCompleto.eliminarMascota(id);
     }
 
-    // Veterinarios queda fijo 
-    @Override
+    
     public void crearVeterinario(Veterinario veterinario) {
         servicioCompleto.crearVeterinario(veterinario);
     }
 
-    @Override
+   
     public Veterinario obtenerVeterinario(int id) {
         return servicioCompleto.obtenerVeterinario(id);
     }
