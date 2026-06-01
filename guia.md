@@ -212,15 +212,17 @@ Checklist de validación:
 
 | Criterio | Sí/No |
 | --- | --- |
-| El proyecto compila | |
-| Ningún animal implementa acciones imposibles | |
-| No hay `UnsupportedOperationException` por capacidades naturales | |
-| El código cliente usa la interfaz correcta según la acción | |
+| El proyecto compila | Sí|
+| Ningún animal implementa acciones imposibles | Sí |
+| No hay `UnsupportedOperationException` por capacidades naturales | Sí|
+| El código cliente usa la interfaz correcta según la acción | Sí|
 
 Preguntas de discusión:
 
 - ¿Por qué lanzar `UnsupportedOperationException` puede ser señal de mal diseño?
+    Porque indica que las clases hijas tienen métodos que no pueden cumplir, por tanto no pueder ser sustituir a su superclase sin miedo a errores. No se puede usar la clase padre Animal con seguridad de que todos sus hijos podrán utilizarse donde se usa a Animal.
 - ¿Qué contrato estaba prometiendo `Animal`?
+    Prometía que todos los animales podían volar, caminar y nadar a la vez. Es incorrecto porque no todos los animales pueden hacer los tres a la vez.
 - ¿Cómo cambia el diseño cuando modelamos capacidades en lugar de herencia amplia?
 
 ## Integrante 4 - DIP/ISP
