@@ -50,3 +50,13 @@ src/main/java/clinicaveterinaria/
 - Integrante 4: refactorizar ISP y DIP.
 
 Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
+
+## DISCUSION
+
+PABLO OJEDA
+
+Se eliminaron los siguiente metodos de la clase Veterinario:
+
+- reservarCita() - Logica a ReservaService
+- diagnosticar() -  Logica a DiagnosticoService
+- crearReporte() - Logica a ReporteService
