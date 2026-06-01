@@ -212,10 +212,10 @@ Checklist de validación:
 
 | Criterio | Sí/No |
 | --- | --- |
-| El proyecto compila | Sí|
+| El proyecto compila | Sí |
 | Ningún animal implementa acciones imposibles | Sí |
-| No hay `UnsupportedOperationException` por capacidades naturales | Sí|
-| El código cliente usa la interfaz correcta según la acción | Sí|
+| No hay `UnsupportedOperationException` por capacidades naturales | Sí |
+| El código cliente usa la interfaz correcta según la acción | Sí |
 
 Preguntas de discusión:
 
@@ -224,6 +224,8 @@ Preguntas de discusión:
 - ¿Qué contrato estaba prometiendo `Animal`?
     Prometía que todos los animales podían volar, caminar y nadar a la vez. Es incorrecto porque no todos los animales pueden hacer los tres a la vez.
 - ¿Cómo cambia el diseño cuando modelamos capacidades en lugar de herencia amplia?
+    Se cambia a una estructura con más interfaces simples. Así cada animal hace solo ulo que tiene que hacer y no tiene que preocuparse por acciones imposibles.
+
 
 ## Integrante 4 - DIP/ISP
 
@@ -296,7 +298,7 @@ Preguntas de discusión:
 | --- | --- | --- | --- | --- |
 | SRP | | | | |
 | OCP | | | | |
-| LSP | | | | |
+| LSP | Sí | Sí | Sí | |
 | ISP/DIP | | | | |
 
 Comandos mínimos:
