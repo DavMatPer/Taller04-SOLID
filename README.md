@@ -60,3 +60,7 @@ Se eliminaron los siguiente metodos de la clase Veterinario:
 - reservarCita() - Logica a ReservaService
 - diagnosticar() -  Logica a DiagnosticoService
 - crearReporte() - Logica a ReporteService
+
+Se cambiaron las firmas de los métodos privados del main para agregar los objetos de tipo service
+
+Se cambió reporteService para agregar el reporte de que una cita fue creada
