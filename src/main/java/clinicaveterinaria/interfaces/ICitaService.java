@@ -1,7 +1,7 @@
 package clinicaveterinaria.interfaces;
 
 import clinicaveterinaria.model.Cita;
-public interface IcitaService {
+public interface ICitaService {
      void crearCita(Cita cita);
      Cita obtenerCita(int id);
      void cancelarCita(int id);
