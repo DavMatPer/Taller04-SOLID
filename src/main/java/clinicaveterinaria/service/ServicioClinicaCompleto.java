@@ -1,6 +1,7 @@
 package clinicaveterinaria.service;
 
 import clinicaveterinaria.interfaces.IServicioClinica;
+import clinicaveterinaria.interfaces.ITratamiento;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
@@ -91,9 +92,9 @@ public class ServicioClinicaCompleto implements IServicioClinica {
         tratamientoService.crearTratamiento(tratamiento);
     }
 
-    @Override
-    public double calcularTratamiento(Tratamiento tratamiento) {
-        return tratamiento.calcularCostoFinal();
+    
+    public double calcularTratamiento(Tratamiento tratamiento, ITratamiento i ) {
+        return tratamiento.calcularCostoFinal(i);
     }
 
     @Override
