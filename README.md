@@ -53,10 +53,23 @@ Lee `guia.md` para instrucciones, checklists y preguntas de discusión.
 
 ## DISCUSION
 
-PABLO OJEDA
+###  1. PABLO OJEDA
 
 Se eliminaron los siguiente metodos de la clase Veterinario:
 
 - reservarCita() - Logica a ReservaService
 - diagnosticar() -  Logica a DiagnosticoService
 - crearReporte() - Logica a ReporteService
+
+### 3. DAVID MATOS
+
+Existía una violacion del principio LSP entre las clases Animal y sus hijos. Animal implementaba una interfaz que tenia todos las acciones: volar, nadar, caminar. Pero esta implementación decía que cualquier anial puede hacerlo todo, pero existen animales que no pueden hacer ciertas acciones. Esto hacía que no se pudiera sustituir el padre por el hijo con total seguridad.
+
+Para resolverlo hicimos:
+
+- Dividimos la interfaz IAnimal en tres interfaces: INadador, ICaminador e IVolador. Y eliminamso la interfaz IAnimal.
+- La clase Animal ya no implementaba la interfaz y eliminamos los métodos de acción. Con eso decimos que cualquier animal puede hacerlo todo, solo sabíamos lo general de cada animal.
+- Ahora hicimos que cada hijo de animal implementara las inerfaces que eran acordes con sus acciones naturales y eliminamos las acciones imposibles.
+- Cambiamos en el método `demostrarViolacionesSinRomperEjecucion` el tipo de una variable pez que era Animal por el tipo Nadador. 
+
+Ahora con este cambio las clases hijas e pueden sustituir por el padre sin miedo de que exista un error o acción antinatural.
