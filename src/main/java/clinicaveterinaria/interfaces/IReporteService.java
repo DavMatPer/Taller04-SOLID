@@ -1,6 +1,9 @@
 package clinicaveterinaria.interfaces;
 
-import clinicaveterinaria.model.Reporte;
+import java.util.List;
+import clinicaveterinaria.model.Cita;
+import clinicaveterinaria.model.Mascota;
+
 public interface IReporteService {
 List<Cita> generarReporteCitasPorVeterinario(int veterinarioId);
 
