@@ -1,17 +1,14 @@
-    package clinicaveterinaria.service;
+package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.interfaces.ITratamiento;
-import clinicaveterinaria.model.TipoTratamiento;
 import clinicaveterinaria.model.Tratamiento;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.util.List;
 
-
 public class TratamientoService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public TratamientoService(BaseDatos baseDatos) {
+    public TratamientoService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 
@@ -22,9 +19,7 @@ public class TratamientoService {
 
     public Tratamiento obtenerTratamiento(int id) {
         for (Tratamiento tratamiento : baseDatos.getTratamientos()) {
-            if (tratamiento.getId() == id) {
-                return tratamiento;
-            }
+            if (tratamiento.getId() == id) { return tratamiento; }
         }
         return null;
     }
@@ -43,7 +38,5 @@ public class TratamientoService {
         return sal.Sala();
     }
 
-    public List<Tratamiento> listarTratamientos() {
-        return baseDatos.getTratamientos();
-    }
+    public List<Tratamiento> listarTratamientos() { return baseDatos.getTratamientos(); }
 }

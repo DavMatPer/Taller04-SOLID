@@ -1,14 +1,13 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Cita;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.util.List;
 
 public class CitaService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public CitaService(BaseDatos baseDatos) {
+    public CitaService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 
@@ -19,9 +18,7 @@ public class CitaService {
 
     public Cita obtenerCita(int id) {
         for (Cita cita : baseDatos.getCitas()) {
-            if (cita.getId() == id) {
-                return cita;
-            }
+            if (cita.getId() == id) { return cita; }
         }
         return null;
     }
@@ -36,7 +33,5 @@ public class CitaService {
         baseDatos.registrarOperacion("eliminarCita");
     }
 
-    public List<Cita> listarCitas() {
-        return baseDatos.getCitas();
-    }
+    public List<Cita> listarCitas() { return baseDatos.getCitas(); }
 }

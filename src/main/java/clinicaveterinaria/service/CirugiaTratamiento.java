@@ -1,11 +1,14 @@
 package clinicaveterinaria.service;
 import clinicaveterinaria.interfaces.ITratamiento;
+import clinicaveterinaria.model.TipoTratamiento;
+import clinicaveterinaria.model.Tratamiento;
 
 
-public class CirugiaTratamiento implements ITratamiento {
+public class CirugiaTratamiento extends Tratamiento implements ITratamiento {
     private final double costo;
 
-    public CirugiaTratamiento(double costo) {
+    public CirugiaTratamiento(int id, String descripcion, double costo) {
+        super(id, TipoTratamiento.CIRUGIA, descripcion, costo);
         this.costo = costo;
     }
 

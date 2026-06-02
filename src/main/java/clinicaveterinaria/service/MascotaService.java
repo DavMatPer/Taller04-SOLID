@@ -1,14 +1,13 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Mascota;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.util.List;
 
 public class MascotaService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public MascotaService(BaseDatos baseDatos) {
+    public MascotaService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 
@@ -19,9 +18,7 @@ public class MascotaService {
 
     public Mascota obtenerMascota(int id) {
         for (Mascota mascota : baseDatos.getMascotas()) {
-            if (mascota.getId() == id) {
-                return mascota;
-            }
+            if (mascota.getId() == id) { return mascota; }
         }
         return null;
     }
@@ -36,7 +33,5 @@ public class MascotaService {
         baseDatos.registrarOperacion("eliminarMascota");
     }
 
-    public List<Mascota> listarMascotas() {
-        return baseDatos.getMascotas();
-    }
+    public List<Mascota> listarMascotas() { return baseDatos.getMascotas(); }
 }

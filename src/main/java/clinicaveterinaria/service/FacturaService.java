@@ -1,14 +1,13 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Factura;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.util.List;
 
 public class FacturaService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public FacturaService(BaseDatos baseDatos) {
+    public FacturaService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 
@@ -19,9 +18,7 @@ public class FacturaService {
 
     public Factura obtenerFactura(int id) {
         for (Factura factura : baseDatos.getFacturas()) {
-            if (factura.getId() == id) {
-                return factura;
-            }
+            if (factura.getId() == id) { return factura; }
         }
         return null;
     }
@@ -43,7 +40,5 @@ public class FacturaService {
         }
     }
 
-    public List<Factura> listarFacturas() {
-        return baseDatos.getFacturas();
-    }
+    public List<Factura> listarFacturas() { return baseDatos.getFacturas(); }
 }

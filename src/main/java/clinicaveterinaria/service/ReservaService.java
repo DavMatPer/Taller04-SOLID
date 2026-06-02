@@ -1,17 +1,16 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.EstadoCita;
 import clinicaveterinaria.model.Mascota;
 import clinicaveterinaria.model.Veterinario;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.time.LocalDate;
 
 public class ReservaService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public ReservaService(BaseDatos baseDatos) {
+    public ReservaService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 

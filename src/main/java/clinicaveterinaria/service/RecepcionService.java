@@ -1,70 +1,67 @@
 package clinicaveterinaria.service;
 
 import clinicaveterinaria.interfaces.IMascotaService;
-import clinicaveterinaria.interfaces.ICitaService;     //quitado y agragado 
+import clinicaveterinaria.interfaces.ICitaService;    
 import clinicaveterinaria.model.Cita;
-import clinicaveterinaria.model.Factura;
 import clinicaveterinaria.model.Mascota;
-import clinicaveterinaria.model.Tratamiento;
 import clinicaveterinaria.model.Veterinario;
-import clinicaveterinaria.interfaces.ICitaService;
-import clinicaveterinaria.interfaces.IVeterinarioService;
 
-import java.util.List;
+public class RecepcionService implements IMascotaService, ICitaService {
 
+    private final IMascotaService mascotaService;
+    private final ICitaService citaService;
+    private final VeterinarioCrudService veterinarioCrudService;
 
-public class RecepcionService implements IMascotaService,ICitaService {
-
-    private final ServicioClinicaCompleto servicioCompleto;
-
-    public RecepcionService(ServicioClinicaCompleto servicioCompleto) {
-        this.servicioCompleto = servicioCompleto;
+    // Inyecta abstracciones puras
+    public RecepcionService(IMascotaService mascotaService, ICitaService citaService, VeterinarioCrudService veterinarioCrudService) {
+        this.mascotaService = mascotaService;
+        this.citaService = citaService;
+        this.veterinarioCrudService = veterinarioCrudService;
     }
 
-    // Mascotasqeuda fijop
     @Override
     public void crearMascota(Mascota mascota) {
-        servicioCompleto.crearMascota(mascota);
+        mascotaService.crearMascota(mascota);
     }
 
     @Override
     public Mascota obtenerMascota(int id) {
-        return servicioCompleto.obtenerMascota(id);
+        return mascotaService.obtenerMascota(id);
     }
 
     @Override
     public void actualizarMascota(Mascota mascota) {
-        servicioCompleto.actualizarMascota(mascota);
+        mascotaService.actualizarMascota(mascota);
     }
 
     @Override
     public void eliminarMascota(int id) {
-        servicioCompleto.eliminarMascota(id);
+        mascotaService.eliminarMascota(id);
     }
 
     
     public void crearVeterinario(Veterinario veterinario) {
-        servicioCompleto.crearVeterinario(veterinario);
+        veterinarioCrudService.crearVeterinario(veterinario);
     }
 
    
     public Veterinario obtenerVeterinario(int id) {
-        return servicioCompleto.obtenerVeterinario(id);
+        return veterinarioCrudService.obtenerVeterinario(id);
     }
 
     // Citas queda fijo 
     @Override
     public void crearCita(Cita cita) {
-        servicioCompleto.crearCita(cita);
+        citaService.crearCita(cita);
     }
 
     @Override
     public Cita obtenerCita(int id) {
-        return servicioCompleto.obtenerCita(id);
+        return citaService.obtenerCita(id);
     }
 
     @Override
     public void cancelarCita(int id) {
-        servicioCompleto.cancelarCita(id);
+        citaService.cancelarCita(id);
     }
 }

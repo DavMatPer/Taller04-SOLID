@@ -1,15 +1,14 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Cita;
 import clinicaveterinaria.model.Factura;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.time.LocalDate;
 
 public class FacturacionService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public FacturacionService(BaseDatos baseDatos) {
+    public FacturacionService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 

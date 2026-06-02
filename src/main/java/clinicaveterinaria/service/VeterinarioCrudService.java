@@ -1,14 +1,13 @@
 package clinicaveterinaria.service;
 
+import clinicaveterinaria.interfaces.IBaseDatos;
 import clinicaveterinaria.model.Veterinario;
-import clinicaveterinaria.repository.BaseDatos;
-
 import java.util.List;
 
 public class VeterinarioCrudService {
-    private final BaseDatos baseDatos;
+    private final IBaseDatos baseDatos;
 
-    public VeterinarioCrudService(BaseDatos baseDatos) {
+    public VeterinarioCrudService(IBaseDatos baseDatos) {
         this.baseDatos = baseDatos;
     }
 
